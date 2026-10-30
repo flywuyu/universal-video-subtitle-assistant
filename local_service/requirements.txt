@@ -1,0 +1,7 @@
+yt-dlp>=2026.3.17
+youtube-transcript-api>=1.2.4
+openai-whisper
+imageio-ffmpeg
+av
+numpy
+psutil

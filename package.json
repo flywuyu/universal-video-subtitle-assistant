@@ -1,0 +1,11 @@
+{
+  "name": "video-subtitle-assistant",
+  "version": "0.3.0",
+  "description": "Native-first video transcripts with local speech fallback for Chrome and Edge",
+  "license": "MIT",
+  "author": "flywuyu",
+  "repository": "github:flywuyu/universal-video-subtitle-assistant",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test tests/*.test.js" }
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>通用视频字幕助手</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="brand-mark">▤</span><span>视频字幕助手</span></div>
+    <div class="top-tools"><span id="site-badge" class="badge">等待视频</span><button id="settings-btn" class="settings-button">设置</button></div>
+  </header>
+  <main>
+    <section class="video-card">
+      <p class="eyebrow">当前视频</p>
+      <h1 id="video-title">打开视频后读取字幕</h1>
+      <p id="video-url" class="muted"></p>
+    </section>
+    <section class="actions">
+      <button id="read-btn" class="primary">读取本页字幕</button>
+      <button id="asr-btn" class="secondary">从声音生成</button>
+    </section>
+    <button id="live-btn" class="live-btn">播放声音识别（首段收集 6 秒）</button>
+    <div id="status" class="status" role="status">优先读取已有字幕；没有字幕时可生成。</div>
+    <div id="progress-wrap" class="progress-wrap" hidden>
+      <div class="progress-track"><div id="progress-bar"></div></div>
+      <span id="progress-text">0%</span>
+      <button id="cancel-btn" class="text-button">取消</button>
+    </div>
+    <nav class="panel-tabs" aria-label="阅读视图"><button data-panel="transcript" class="selected">字幕</button><button data-panel="overview">概览</button><button data-panel="notes">笔记</button></nav>
+    <div id="transcript-view">
+    <section id="transcript-area" hidden>
+      <div class="language-tabs"><button data-view="original" class="selected">原文</button><button data-view="zh">中文</button><button data-view="bilingual">双语</button><button id="translate-all" hidden>翻译全文</button></div>
+      <div class="toolbar">
+        <div>
+          <span id="source-badge" class="source-badge"></span>
+          <span id="count" class="muted"></span>
+        </div>
+        <select id="track-select" aria-label="字幕语言" hidden></select>
+      </div>
+      <label class="search-wrap">
+        <span>⌕</span>
+        <input id="search" type="search" placeholder="搜索字幕内容">
+      </label>
+      <div class="export-actions">
+        <button id="copy-btn">复制全文</button>
+        <button id="plain-btn">纯文字</button>
+        <button id="txt-btn">TXT</button>
+        <button id="srt-btn">SRT</button>
+        <button id="vtt-btn">VTT</button>
+      </div>
+      <div id="segments" class="segments"></div>
+      <button id="more-btn" class="more" hidden>显示更多</button>
+    </section>
+    </div>
+    <section id="overview-view" class="reading-card" hidden><h2>视频概览</h2><p>根据已提取的字幕生成要点和时间索引。</p>
+      <button id="overview-btn" class="primary utility-button">生成中文概览</button><button id="copy-overview" class="utility-button">复制概览</button><div id="overview-content" class="long-text"></div></section>
+    <section id="notes-view" class="reading-card" hidden><h2>时间戳笔记</h2><textarea id="note-text" placeholder="记录你的想法，或先选中一段字幕…"></textarea>
+      <button id="save-note" class="primary utility-button">保存到当前时间</button><div id="notes-list"></div></section>
+    <section class="help">
+      <p>优先显示平台原字幕；语音转写会单独标明。Supadata 用于原生字幕，DeepSeek 用于翻译与概览。</p>
+      <p>画面里压制的文字可能与原声不同；“从声音生成”识别的是原声。</p>
+    </section>
+  </main>
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

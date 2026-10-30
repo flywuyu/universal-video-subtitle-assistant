@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "通用视频字幕助手",
+  "version": "0.3.0",
+  "description": "优先读取现成字幕；没有字幕时使用本机语音识别。",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "sidePanel",
+    "storage",
+    "downloads",
+    "tabCapture",
+    "nativeMessaging",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "打开通用视频字幕助手"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [{
+    "matches": ["https://*.youtube.com/*","https://*.bilibili.com/*","https://*.douyin.com/*","https://*.tiktok.com/*"],
+    "js": ["pageBridge.js"],
+    "run_at": "document_start",
+    "world": "MAIN"
+  }],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2yUDRuJr7w2xjOg6vusytA1Yo1/GSTUUpjjZcP1LCG475ugHyifGNUI61DNvlNq7jp16smGW7tX/6f7r2PAoVm/hSYrTDv1n/7beLZ/BqsHgBpEX/WKIW7CoIjbyEfC4Ke5Cy3jODarqHm7S4orx8K8phyy9oDN0C4e6R0+3Gx7KPztvKR6uvT//YFtplitVJmoXqIBLPx1Dlv8DSQKxoUXDoZkqU3USL78e4hwdsdApImLNAmIMd72s4tlAMBZ5XTKq+FLPMBDiGGM/3lXw74zvWR12yWpEsc4ugDdV6qapm/2wPOzLTRqDnkXUJ24bevliYpyTwv5sq9y5j9fdFwIDAQAB"
+}
